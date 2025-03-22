@@ -1,0 +1,96 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Booking Form
+  </title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            background-color: white;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        .form-control::placeholder {
+            color: #6c757d;
+        }
+        .btn-next {
+            background-color: #28a745;
+            color: white;
+        }
+  </style>
+ </head>
+ <body class="d-flex flex-column align-items-center justify-content-center min-vh-100">
+  <div class="container form-container">
+   <div class="row justify-content-center">
+    <div class="col-md-6">
+     <div class="card">
+      <img alt="Bridge with cars and cityscape in the background" class="card-img-top" src="https://placehold.co/600x200"/>
+      <div class="card-body">
+       <div class="form-group">
+        <div class="input-group">
+         <div class="input-group-prepend">
+          <span class="input-group-text">
+           <i class="fas fa-map-marker-alt">
+           </i>
+          </span>
+         </div>
+         <input class="form-control" placeholder="Enter pickup location" type="text"/>
+        </div>
+       </div>
+       <div class="form-group">
+        <div class="input-group">
+         <div class="input-group-prepend">
+          <span class="input-group-text">
+           <i class="fas fa-map-marker-alt">
+           </i>
+          </span>
+         </div>
+         <input class="form-control" placeholder="Enter drop-off location" type="text"/>
+        </div>
+       </div>
+       <div class="form-group">
+        <div class="input-group">
+         <div class="input-group-prepend">
+          <span class="input-group-text">
+           <i class="fas fa-calendar-alt">
+           </i>
+          </span>
+         </div>
+         <input class="form-control" placeholder="Date and time (departure)" type="text"/>
+        </div>
+       </div>
+       <div class="form-group">
+        <div class="input-group">
+         <div class="input-group-prepend">
+          <span class="input-group-text">
+           <i class="fas fa-car">
+           </i>
+          </span>
+         </div>
+         <select class="form-control">
+          <option>
+           Select Vehicle
+          </option>
+         </select>
+        </div>
+       </div>
+       <button class="btn btn-next btn-block">
+        Next
+       </button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">
+  </script>
+ </body>
+</html>
