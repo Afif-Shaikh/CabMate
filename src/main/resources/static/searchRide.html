@@ -5,82 +5,100 @@
 <title>Cab Booking</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="searchRide.js"></script>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-	rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+
+<!-- Leaflet for Map Display (Optional) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
-<body class="bg-gray-100">
-	<div class="relative">
-		<img
-			alt="Illustration of cars on a bridge with a cityscape background"
-			class="w-full" src="https://placehold.co/400x200" />
-		<div class="absolute top-0 left-0 p-4">
-			<i class="fas fa-arrow-left text-white text-2xl"> </i>
-		</div>
-	</div>
-	<div class="px-4 py-6">
-		<div class="bg-white rounded-lg shadow-lg p-4">
-			<div class="mb-4">
-				<label class="flex items-center space-x-2"> <i
-					class="fas fa-map-marker-alt text-gray-500"> </i> <input
-					class="w-full border-b border-gray-300 focus:outline-none focus:border-green-500"
-					placeholder="Enter pickup location" type="text" />
-				</label>
-			</div>
-			<div class="mb-4">
-				<label class="flex items-center space-x-2"> <i
-					class="fas fa-map-marker-alt text-gray-500"> </i> <input
-					class="w-full border-b border-gray-300 focus:outline-none focus:border-green-500"
-					placeholder="Enter drop-off location" type="text" />
-				</label>
-			</div>
-			<div class="mb-4">
-				<label class="flex items-center space-x-2"> <i
-					class="fas fa-user text-gray-500"> </i> <input
-					class="w-full border-b border-gray-300 focus:outline-none focus:border-green-500"
-					type="number" value="1" />
-				</label>
-			</div>
-			<div class="mb-4">
-				<label class="flex items-center space-x-2"> <i
-					class="fas fa-calendar-alt text-gray-500"> </i> <input
-					class="w-full border-b border-gray-300 focus:outline-none focus:border-green-500"
-					type="text" value="Today" />
-				</label>
-			</div>
-			<button
-				class="w-full bg-green-500 text-white py-2 rounded-lg shadow-lg flex items-center justify-center space-x-2">
-				<span> Search Cab </span> <i class="fas fa-arrow-right"> </i>
-			</button>
-		</div>
-		
-		<button
-			class="w-full mt-4 bg-green-500 text-white py-2 rounded-lg shadow-lg">
-			Create Ride</button>
-	</div>
-	<div class="fixed bottom-0 left-0 right-0 bg-white shadow-lg">
-		<div class="flex justify-around py-2">
-			<div class="flex flex-col items-center text-green-500">
-				<i class="fas fa-taxi text-2xl"> </i> <span class="text-xs">
-					Search </span>
-			</div>
-			<div class="flex flex-col items-center text-gray-500">
-				<i class="fas fa-history text-2xl"> </i> <span class="text-xs">
-					My Rides </span>
-			</div>
-			<div class="flex flex-col items-center text-gray-500">
-				<i class="fas fa-wallet text-2xl"> </i> <span class="text-xs">
-					Wallet </span>
-			</div>
-<!-- 			<div class="flex flex-col items-center text-gray-500"> -->
-<!-- 				<i class="fas fa-inbox text-2xl"> </i> <span class="text-xs"> -->
-<!-- 					Inbox </span> -->
-<!-- 			</div> -->
-			<div class="flex flex-col items-center text-gray-500">
-				<i class="fas fa-user text-2xl"> </i> <button class="text-xs">
-					Profile </button>
-			</div>
-		</div>
-	</div>
+<body class="bg-gray-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Container to center everything -->
+    <div class="flex flex-col items-center justify-between flex-grow max-w-[375px] w-full mx-auto p-4">
+
+        <!-- Image Section -->
+<!--         <div class="relative w-full max-w-sm mb-6"> -->
+<!--             <img -->
+<!--                 alt="Illustration of cars on a bridge with a cityscape background" -->
+<!--                 class="w-full rounded-t-lg" -->
+<!--                 src="https://placehold.co/400x200" -->
+<!--             /> -->
+<!--             <div class="absolute top-0 left-0 p-4"> -->
+<!--                 <i class="fas fa-arrow-left text-white text-2xl"> </i> -->
+<!--             </div> -->
+<!--         </div> -->
+
+        <!-- Form container centered with padding and rounded corners -->
+        <div class="px-6 py-6 bg-white rounded-lg shadow-lg w-full max-w-sm mb-6">
+            <div class="mb-4">
+                <label class="flex items-center space-x-2">
+                    <i class="fas fa-map-marker-alt text-gray-500"> </i>
+                    <input id="pickup" class="w-full border-b border-gray-300 focus:outline-none focus:border-green-500" placeholder="Enter pickup location" type="text" oninput="fetchLocationSuggestions(this.value, 'pickupSuggestions')" />
+                </label>
+                <div id="pickupSuggestions" class="suggestions" class="absolute w-full bg-white border border-gray-300 shadow-lg rounded-md mt-1 max-h-48 overflow-y-auto hidden"></div>
+            </div>
+            <div class="mb-4">
+                <label class="flex items-center space-x-2">
+                    <i class="fas fa-map-marker-alt text-gray-500"> </i>
+                    <input id="dropoff" class="w-full border-b border-gray-300 focus:outline-none focus:border-green-500" placeholder="Enter drop-off location" type="text" oninput="fetchLocationSuggestions(this.value, 'dropoffSuggestions')"/>
+                </label>
+                <div id="dropoffSuggestions" class="suggestions" class="absolute w-full bg-white border border-gray-300 shadow-lg rounded-md mt-1 max-h-48 overflow-y-auto hidden"></div>
+            </div>
+            <div class="mb-4">
+                <label class="flex items-center space-x-2">
+                    <i class="fas fa-user text-gray-500"> </i>
+                    <input class="w-full border-b border-gray-300 focus:outline-none focus:border-green-500" type="number" value="1" />
+                </label>
+            </div>
+            <div class="mb-4">
+                <label class="flex items-center space-x-2">
+                    <i class="fas fa-calendar-alt text-gray-500"> </i>
+                    <input class="w-full border-b border-gray-300 focus:outline-none focus:border-green-500" type="text" value="Today" />
+                </label>
+            </div>
+            <button onclick="searchRide()"  class="w-full bg-green-500 text-white py-2 rounded-lg shadow-lg flex items-center justify-center space-x-2">
+                <span> Search Cab </span>
+                <i class="fas fa-arrow-right"> </i>
+            </button>
+        </div>
+        <div id="rideResults" class="mt-4 bg-white rounded-lg shadow-lg p-4"></div>
+        <div id="map" style="height: 300px; width: 100%;" class="mt-4"></div>
+        
+
+        <!-- Create Ride Button -->
+        <button class="w-full mt-4 bg-green-500 text-white py-2 rounded-lg shadow-lg">
+            Create Ride
+        </button>
+
+        <!-- Bottom Navbar (Centered like the container) -->
+        <div class="w-full mt-6 bg-white shadow-lg rounded-lg">
+            <div class="flex justify-around py-2">
+                <!-- Search Button -->
+                <a href="searchRide.html" class="flex flex-col items-center text-green-500">
+                    <i class="fas fa-taxi text-2xl"> </i>
+                    <span class="text-xs">Search</span>
+                </a>
+
+                <!-- My Rides Button -->
+                <a href="myRides.html" class="flex flex-col items-center text-gray-500">
+                    <i class="fas fa-history text-2xl"> </i>
+                    <span class="text-xs">My Rides</span>
+                </a>
+
+                <!-- Wallet Button -->
+                <a href="wallet.html" class="flex flex-col items-center text-gray-500">
+                    <i class="fas fa-wallet text-2xl"> </i>
+                    <span class="text-xs">Wallet</span>
+                </a>
+
+                <!-- Profile Button -->
+                <a href="profile.html" class="flex flex-col items-center text-gray-500">
+                    <i class="fas fa-user text-2xl"> </i>
+                    <span class="text-xs">Profile</span>
+                </a>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>

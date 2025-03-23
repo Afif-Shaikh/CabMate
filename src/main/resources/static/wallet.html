@@ -1,60 +1,64 @@
 <html>
 <head>
-    <title>Wallet</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<title>Wallet</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body class="bg-white">
-    <div class="flex flex-col items-center justify-center min-h-screen">
-        <!-- Header -->
-        <div class="w-full bg-blue-500 text-white p-4 flex items-center">
-            <i class="fas fa-arrow-left text-xl"></i>
-            <div class="flex-grow text-center">
-                <p class="text-sm">Total Balance</p>
-                <p class="text-3xl font-bold">₹ 0.00</p>
-            </div>
-        </div>
+	<div
+		class="flex flex-col items-center justify-center min-h-screen max-w-[375px] w-full mx-auto">
+		<!-- Header -->
+		<div class="w-full bg-blue-500 text-white p-12 flex items-center rounded-lg">
+			<i class="fas fa-arrow-left text-xl"></i>
+			<div class="flex-grow text-center">
+				<p class="text-m">Total Balance</p>
+				<p class="text-5xl font-bold">₹ 0.00</p>
+			</div>
+		</div>
 
-        <!-- Buttons -->
-        <div class="flex w-full justify-center mt-4">
-            <button class="bg-black text-white py-2 px-6 rounded-full mr-2">Top up</button>
-            <button class="bg-white text-green-500 border border-green-500 py-2 px-6 rounded-full">Withdrawal</button>
-        </div>
+		<!-- Buttons -->
+		<div class="flex w-full justify-center mt-4">
+			<button class="bg-black text-white py-2 px-6 rounded-full mr-2">Top up</button>
+			<button class="bg-white text-green-500 border border-green-500 py-2 px-6 rounded-full">Withdrawal</button>
+		</div>
 
-        <!-- Tabs -->
-        <div class="w-full flex justify-center mt-4 border-b">
-            <button class="text-green-500 border-b-2 border-green-500 py-2 px-4">Transaction History</button>
-            <button class="text-gray-500 py-2 px-4">Withdrawal History</button>
-        </div>
+		<!-- Tabs -->
+		<div class="w-full flex justify-center mt-4 border-b">
+			<button class="text-green-500 border-b-2 border-green-500 py-2 px-4">Transaction History</button>
+			<button class="text-gray-500 py-2 px-4">Withdrawal History</button>
+		</div>
 
-        <!-- Content -->
-        <div class="flex-grow flex items-center justify-center w-full">
-            <p class="text-gray-500">Transaction not found</p>
-        </div>
+		<!-- Content -->
+		<div class="flex-grow flex items-center justify-center w-full">
+			<p class="text-gray-500">Transaction not found</p>
+		</div>
 
-        <!-- Footer -->
-        <div class="w-full bg-white border-t fixed bottom-0 flex justify-around py-2">
-            <div class="flex flex-col items-center">
-                <i class="fas fa-car text-xl text-gray-500"></i>
-                <p class="text-xs text-gray-500">Search</p>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-history text-xl text-gray-500"></i>
-                <p class="text-xs text-gray-500">My Rides</p>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-wallet text-xl text-green-500"></i>
-                <p class="text-xs text-green-500">Wallet</p>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-inbox text-xl text-gray-500"></i>
-                <p class="text-xs text-gray-500">Inbox</p>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-user text-xl text-gray-500"></i>
-                <p class="text-xs text-gray-500">Profile</p>
-            </div>
-        </div>
-    </div>
+		<!-- Bottom Navbar (Centered like the container) -->
+		<div
+			class="w-full max-w-sm mx-auto mt-4 bg-white shadow-lg rounded-lg">
+			<div class="flex justify-around py-2">
+				<!-- Search Button -->
+				<a href="searchRide.html" class="flex flex-col items-center text-green-500"> 
+				<i class="fas fa-taxi text-2xl"> </i> <span class="text-xs">Search</span>
+				</a>
+
+				<!-- My Rides Button -->
+				<a href="myRides.html" class="flex flex-col items-center text-gray-500"> 
+				<i class="fas fa-history text-2xl"> </i> <span class="text-xs">My Rides</span>
+				</a>
+
+				<!-- Wallet Button -->
+				<a href="wallet.html" class="flex flex-col items-center text-gray-500"> 
+				<i class="fas fa-wallet text-2xl"> </i> <span class="text-xs">Wallet</span>
+				</a>
+
+				<!-- Profile Button -->
+				<a href="profile.html" class="flex flex-col items-center text-gray-500"> 
+				<i class="fas fa-user text-2xl"> </i> <span class="text-xs">Profile</span>
+				</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
